@@ -1,10 +1,13 @@
 package dz.wasstyle.aoc;
 
+import dz.wasstyle.aoc.dayfour.CeresSearch;
 import dz.wasstyle.aoc.dayone.HistorianHysteria;
+import dz.wasstyle.aoc.daythree.MullItOver;
 import dz.wasstyle.aoc.daytwo.RedNosedReports;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Main {
 
@@ -13,7 +16,7 @@ public class Main {
     private static ArrayList<Integer> daysToExecute = new ArrayList<>();
     public static void main(String[] args) {
 
-        // Debug state
+        // Args Management
         for(String arg : args) {
             if(!arg.startsWith("-")) continue;
             if(arg.startsWith("-day")) {
@@ -37,8 +40,20 @@ public class Main {
             }
         }
 
-        if(daysToExecute.toArray().length == 0 ||(daysToExecute.toArray().length > 0 && daysToExecute.contains(1))) HistorianHysteria.execute();
-        if(daysToExecute.toArray().length == 0 ||(daysToExecute.toArray().length > 0 && daysToExecute.contains(2))) RedNosedReports.execute();
+        Map<Integer, Day> executions = Map.of(
+                1, new HistorianHysteria(),
+                2, new RedNosedReports(),
+                3, new MullItOver(),
+                4, new CeresSearch()
+        );
+
+        if (daysToExecute.isEmpty()) {
+            executions.values().forEach(Day::execute);
+        } else {
+            daysToExecute.forEach(day -> {
+                executions.get(day).execute();
+            });
+        }
 
     }
 

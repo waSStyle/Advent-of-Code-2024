@@ -1,5 +1,6 @@
 package dz.wasstyle.aoc.daytwo;
 
+import dz.wasstyle.aoc.Day;
 import dz.wasstyle.aoc.Main;
 
 import java.io.File;
@@ -7,7 +8,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class RedNosedReports {
+public class RedNosedReports implements Day {
 
     private static String FILE_PATH = "day2_input.txt";
 
@@ -178,7 +179,7 @@ public class RedNosedReports {
         return stacker;
     }
 
-    public static void execute() {
+    public void execute() {
 
         File file = Main.getResource(FILE_PATH);
         ArrayList<String> inputs = fileToArray(file);

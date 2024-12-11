@@ -1,5 +1,6 @@
 package dz.wasstyle.aoc.dayone;
 
+import dz.wasstyle.aoc.Day;
 import dz.wasstyle.aoc.Main;
 
 import java.io.File;
@@ -7,7 +8,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class HistorianHysteria {
+public class HistorianHysteria implements Day {
 
     private static String FILE_PATH = "day1_input.txt";
 
@@ -135,8 +136,7 @@ public class HistorianHysteria {
         Main.sendDebugMessage("-------------------------getDistance()----------------------------------");
         return distance;
     }
-
-    public static void execute() {
+    public void execute() {
         File file = Main.getResource(FILE_PATH);
         ArrayList<String> stringsSequences = fileToArray(file);
         ArrayList<ArrayList<Integer>> sequences = stringToIntegerArray(stringsSequences);
